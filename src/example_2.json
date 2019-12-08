@@ -1,0 +1,55 @@
+{
+  "Test": {
+    "Name": "Auto Test v 0.1 alpha",
+    "Topic": "Тест по истории",
+    "questions": [
+      {
+        "id": 0,
+        "type": "checkbox",
+        "question": "q1",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "answer": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": 1,
+        "type": "checkbox",
+        "question": "q2",
+        "options": [
+          "dd",
+          "ss",
+          "vv",
+          "zz"
+        ],
+        "answer": [
+          "dd",
+          "ss",
+          "vv",
+          "zz"
+        ]
+      },
+      {
+        "id": 2,
+        "type": "checkbox",
+        "question": "q3",
+        "options": [
+          "dnhhnd",
+          "ghn"
+        ],
+        "answer": [
+          "dnhhnd",
+          "ghn"
+        ]
+      }
+    ]
+  }
+}
