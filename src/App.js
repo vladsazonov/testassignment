@@ -5,6 +5,7 @@ import TestCard from "./Components/TestCard";
 import Drawers from "./Components/Drawers";
 import Test from "./Components/Test"
 import ResultPage from "./Components/ResultPage";
+import History from './Components/History';
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,7 +15,7 @@ import {
 
 function App() {
     return (
-                <Router>
+                <Router History={History}>
                    <ScreenSwitcher/>
                 </Router>
     );
@@ -27,9 +28,8 @@ function ScreenSwitcher() {
                     <Route exact path="/">
                        <Home/>
                     </Route>
-                    <Route path="/test">
-                       <Test/>
-                    </Route>
+                    <Route path="/test"
+                    render={props => <Test {...props}/>}/>
                     <Route exact path="/result">
                         <ResultPage/>
                     </Route>

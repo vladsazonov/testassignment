@@ -1,53 +1,54 @@
 {
   "Test": {
     "Name": "Auto Test v 0.1 alpha",
-    "Topic": "Тест по истории",
+    "Topic": "Основы программирования",
     "questions": [
       {
         "id": 0,
         "type": "checkbox",
-        "question": "q1",
+        "question": "React - это...",
         "options": [
-          "1",
-          "2",
-          "3",
-          "4"
+          "Библиотека",
+          "Фрейморк",
+          "Программа",
+          "Язык программирования"
         ],
         "answer": [
-          "1",
-          "2",
-          "3",
-          "4"
+          "Библиотека"
         ]
       },
       {
         "id": 1,
         "type": "checkbox",
-        "question": "q2",
+        "question": "Основные принципы ООП",
         "options": [
-          "dd",
-          "ss",
-          "vv",
-          "zz"
+          "Инаугурация",
+          "Полиморфизм",
+          "Абстракция",
+          "Автоматизация",
+          "Инкапсуляция",
+          "Итеграция",
+          "Наследование"
         ],
         "answer": [
-          "dd",
-          "ss",
-          "vv",
-          "zz"
+          "Полиморфизм",
+          "Абстракция",
+          "Инкапсуляция",
+          "Наследование"
         ]
       },
       {
         "id": 2,
         "type": "checkbox",
-        "question": "q3",
+        "question": "Как выглядят стрелочные функции?",
         "options": [
-          "dnhhnd",
-          "ghn"
+          "let f = () => {console.log('Hello world)}",
+          "function f() {console.log('Hello world)}",
+          "f = a => a * 2"
         ],
         "answer": [
-          "dnhhnd",
-          "ghn"
+          "let f = () => {console.log('Hello world)}",
+          "f = a => a * 2"
         ]
       }
     ]

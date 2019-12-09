@@ -6,18 +6,25 @@ let testObj = {
    topic: '',
    questions: [],
 };
+let finishCount;
+let questionsCount;
 
-export default function testService () {
+export function testService () {
+    testObj = {
+        testTitle: testData.Test.Name,
+        topic: testData.Test.Topic,
+        questions: testData.Test.questions,
+    };
 
-   return (
-       testObj = {
-          testTitle: testData.Test.Name,
-          topic: testData.Test.Topic,
-          questions: testData.Test.questions,
-       }
-   );
+   return {
+       testObj,
+       finishCount,
+       questionsCount
+   };
 };
 
-export const test = () => {
-    alert('hyi')
+export const testResult = (rightCount, maxSteps) => {
+    finishCount = rightCount;
+    questionsCount = maxSteps;
+    console.log('test result ' + finishCount)
 };

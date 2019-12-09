@@ -3,7 +3,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import {makeStyles} from "@material-ui/styles";
 import {Typography, Divider} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import testService from '../services/testService'
+import {testService} from '../services/testService'
 import Radio from '@material-ui/core/Radio';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
