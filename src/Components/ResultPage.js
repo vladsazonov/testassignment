@@ -27,8 +27,9 @@ export default function Home() {
     return (
         <div style={{textAlign: 'center'}}>
             <Typography className={classes.color} variant="h3">Тест завершен</Typography>
-            <Typography className={classes.resultText} variant="h5">Вы правильно ответили
-                на {finishCount ? finishCount : '0'} вопросов из {questionsCount ? questionsCount : '0'} </Typography>
+            <Typography className={classes.resultText} variant="h5">
+                Вы правильно ответили на {finishCount ? finishCount : '0'} вопросов из {questionsCount ? questionsCount : '0'}
+            </Typography>
             <Link to="/" style={{textDecoration: 'none'}}>
                 <Button style={{marginTop: 80}} variant="contained" color="primary">Пройти заново</Button>
             </Link>

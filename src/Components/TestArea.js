@@ -11,11 +11,9 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Checkbox from "@material-ui/core/Checkbox";
 import Radio from '@material-ui/core/Radio';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import {useHistory} from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     root: {
         flexGrow: 1,
     },
@@ -23,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         height: 50,
-        paddingLeft: theme.spacing(4),
+        padding: '0 30px 0 30px',
         backgroundColor: '#dedede',
     },
     img: {
@@ -49,20 +47,21 @@ const useStyles = makeStyles(theme => ({
     questionName: {
         marginBottom: 10,
     },
-}));
+});
 
 export const TestArea = observer(() => {
         const classes = useStyles();
         const theme = useTheme();
-        let history = useHistory();
+        const history = useHistory();
         const testData = testService();
-        const [activeStep, setActiveStep] = useState(0);
         const maxSteps = testData.testObj.questions.length;
+
+        const [activeStep, setActiveStep] = useState(0);
         const [checkedItems, setCheckedItems] = useState(() => observable([]));
         const [isChecked, setIsChecked] = useState(() => observable(new Map()));
         const [selectedValue, setSelectedValue] = useState(null);
         const [equalObjects, setEqualObjects] = useState(() => observable([]));
-        let [rightCount, setRightCount] = useState(0);
+        const [rightCount, setRightCount] = useState(0);
         const [isDone, setIsDone] = useState(false);
 
         let findElem = {};
@@ -76,10 +75,9 @@ export const TestArea = observer(() => {
             if (isDone) {
                 testResult(rightCount, maxSteps);
                 history.push("/result");
-            } else {
-                console.log('use effect')
             }
         });
+
         const handleChange = event => {
             findElem = checkedItems.find(elem => elem.value === event.target.value);
             const item = event.target.value;
@@ -100,9 +98,7 @@ export const TestArea = observer(() => {
         };
 
         const handleChangeRadio = event => {
-            let radioValue = event.target.value;
-            let checked = event.target.checked;
-            setSelectedValue(radioValue);
+            setSelectedValue(event.target.value);
             findElem = checkedItems.find(elem => elem.value === event.target.value);
             if (!findElem) {
                 checkElem = {
@@ -110,29 +106,21 @@ export const TestArea = observer(() => {
                     status: true
                 };
                 checkedItems.push(checkElem);
-                console.log(checkedItems.value);
-            } else {
-                console.log('ya tyt');
             }
-        }
+        };
 
         function checkRightAnswers() {
-            let i = checkedItems.map(elem => elem.value);
-            console.log('checkedItems' + i);
-            i.forEach(e1 => {
+            let checkedItemsArr = checkedItems.map(elem => elem.value);
+            checkedItemsArr.forEach(e1 => {
                 currentQuestion.answer.forEach(e2 => {
                     if (JSON.stringify(e1) === JSON.stringify(e2)) {
                         equalObjects.push(e1);
-                        console.log(equalObjects)
                     }
                 });
             });
-            if (equalObjects.length === currentQuestion.answer.length && i.length === currentQuestion.answer.length) {
-                console.log('все верно');
+            if (equalObjects.length === currentQuestion.answer.length && checkedItemsArr.length === currentQuestion.answer.length) {
                 setRightCount(prevState => prevState + 1);
                 testResult();
-            } else {
-                console.log('вопрос не зачтен');
             }
         }
 
@@ -147,18 +135,11 @@ export const TestArea = observer(() => {
             }
         };
 
-        const handleFinishTest = () => {
-            checkRightAnswers();
-            testResult(rightCount, maxSteps);
-            history.push("/result");
-        };
-
         const questionsView = () => {
             if (currentQuestion) {
                 return (
                     <div key={currentQuestion.id} className={classes.root1}>
                         <div className={classes.answersBlock}>
-
                             {
                                 currentQuestion.options.map(option => {
                                     return (
@@ -185,11 +166,9 @@ export const TestArea = observer(() => {
                                                         <Typography variant="h6">{option}</Typography>
                                                     </>)
                                             }
-                                        </div>
-                                    )
+                                        </div>)
                                 })
                             }
-
                         </div>
                     </div>
                 )

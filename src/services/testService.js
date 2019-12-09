@@ -1,5 +1,5 @@
 import React from 'react';
-import testData from '../example_2';
+import testData from '../test';
 
 let testObj = {
    testTitle: '',
@@ -26,5 +26,4 @@ export function testService () {
 export const testResult = (rightCount, maxSteps) => {
     finishCount = rightCount;
     questionsCount = maxSteps;
-    console.log('test result ' + finishCount)
 };

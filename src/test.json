@@ -1,12 +1,12 @@
 {
   "Test": {
-    "Name": "Auto Test v 0.1 alpha",
+    "Name": "Auto Test",
     "Topic": "Основы программирования",
     "questions": [
       {
         "id": 0,
-        "type": "checkbox",
-        "question": "React - это...",
+        "type": "radio",
+        "question": "ReactJS - это...",
         "options": [
           "Библиотека",
           "Фрейморк",
@@ -27,7 +27,7 @@
           "Абстракция",
           "Автоматизация",
           "Инкапсуляция",
-          "Итеграция",
+          "Интеграция",
           "Наследование"
         ],
         "answer": [
@@ -49,6 +49,20 @@
         "answer": [
           "let f = () => {console.log('Hello world)}",
           "f = a => a * 2"
+        ]
+      },
+      {
+        "id": 3,
+        "type": "radio",
+        "question": "Test last radio",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4 (answer)"
+        ],
+        "answer": [
+          "4 (answer)"
         ]
       }
     ]
