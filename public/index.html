@@ -14,11 +14,48 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="http://cdn.sockjs.org/websocket-multiplex-0.1.js"></script>
 
     <title>Test</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      // Pipe - convenience wrapper to present data received from an
+      // object supporting WebSocket API in an html element. And the other
+      // direction: data typed into an input box shall be sent back.
+      var pipe = function(ws, el_name) {
+        var div  = $(el_name + ' div');
+        var inp  = $(el_name + ' input');
+        var form = $(el_name + ' form');
+        var print = function(m, p) {
+          p = (p === undefined) ? '' : JSON.stringify(p);
+          div.append($("<code>").text(m + ' ' + p));
+          div.append($("<br>"));
+          div.scrollTop(div.scrollTop() + 10000);
+        };
+        ws.onopen    = function()  {print('[*] open', ws.protocol);};
+        ws.onmessage = function(e) {print('[.] message', e.data);};
+        ws.onclose   = function()  {print('[*] close');};
+        form.submit(function() {
+          print('[ ] sending', inp.val());
+          ws.send(inp.val());
+          inp.val('');
+          return false;
+        });
+      };
+      var sockjs_url = '/multiplex';
+      var sockjs = new SockJS(sockjs_url);
+      var multiplexer = new WebSocketMultiplex(sockjs);
+      var ann  = multiplexer.channel('ann');
+      var bob  = multiplexer.channel('bob');
+      var carl = multiplexer.channel('carl');
+      pipe(ann,  '#first');
+      pipe(bob,  '#second');
+      pipe(carl, '#third');
+      $('#first input').focus();
+    </script>
   </body>
 </html>
